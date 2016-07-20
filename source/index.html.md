@@ -20,6 +20,24 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Cache
+> The **Cache** JSON structred like this:
+
+```json
+{
+    "date": "2016-06-24T00:00:00Z",
+    "cache": "... the edits you want to save in here ..."
+}
+```
+
+### Description
+The edits cache is for front-end to help user[Manager] temporarily store the schedules edits.
+
+### Attributes
+Attribute   | Description
+date        | The from date time of availability. __ISO RFC3336__ Date with zone offset.
+cache       | The free text contains schedules edits from user[Manager]
+
 ## Slot
 > The **Slot** JSON structured like this:
 
@@ -266,7 +284,7 @@ Restricts: [to] date must be after [from]
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint publish all the updates of schedules for store.
 
 ### HTTP Request
 
@@ -338,3 +356,92 @@ Field       | Description
 from        | **(Included)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 to          | **(Excluded)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 schedules   | A list of **_Slot_** Objects that contains the updates you want to publish
+
+## Get Caches of Schedules Edits
+
+> The **Response** JSON structured like this:
+
+```json
+{  
+   "messages":[  
+      "SCHEDULES HAVE BEEN UPDATED SUCCESSFULLY!"
+   ],
+   "success":true,
+   "result": [
+   		{
+		    "date": "2016-06-24T00:00:00Z",
+		    "cache": "... the edits you want to save in here ..."
+		},
+		{
+		    "date": "2016-06-25T00:00:00Z",
+		    "cache": "... the edits you want to save in here ..."
+		}
+   ]
+}
+```
+
+This endpoints retrieves Schedules Edits of User[Manager] within the period.
+
+### HTTP Request
+
+**_GET_** `/api/v2/m/schedules/{districtid}/caches`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+<aside class="warning">
+Restricts: [to] date must be after [from]
+</aside>
+
+## Deposit Caches of Schedules Edits
+
+> The **Response** JSON structured like this:
+
+```json
+{  
+   "messages":[  
+      "SCHEDULES HAVE BEEN UPDATED SUCCESSFULLY!"
+   ],
+   "success":true,
+   "result":
+}
+```
+
+This endpoints deposits Schedules Edits of User[Manager] temporarily.
+
+### HTTP Request
+
+**_POST_** `/api/v2/m/schedules/{districtid}/caches`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       | Description
+ ---------- | -----------
+caches      | A list of daily caches 
+
+> The **Request Body** Json structured like this:
+
+```json
+[
+	{
+	    "date": "2016-06-24T00:00:00Z",
+	    "cache": "... the edits you want to save in here ..."
+	},
+	{
+	    "date": "2016-06-25T00:00:00Z",
+	    "cache": "... the edits you want to save in here ..."
+	}
+]
+```
