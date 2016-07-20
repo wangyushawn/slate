@@ -790,18 +790,24 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 > The **Response** JSON structured like this:
 
 ```json
-[
-	{
-	    "date": "2016-06-24T00:00:00Z",
-	    "hours": 48.0,
-	    "cost": 743.5
-	},
-	{
-	    "date": "2016-06-25T00:00:00Z",
-	    "hours": 58.0,
-	    "cost": 1043.5
-	}
-]
+{
+  "messages": [
+    "ANNUALLY PERFORMANCE HAS BEEN CALCULATED SUCCESSFULLY ..."
+  ],
+  "success": true,
+  "result": [
+		{
+		    "date": "2016-06-24T00:00:00Z",
+		    "hours": 48.0,
+		    "cost": 743.5
+		},
+		{
+		    "date": "2016-06-25T00:00:00Z",
+		    "hours": 58.0,
+		    "cost": 1043.5
+		}
+	]
+}
 ```
 
 This endpoint fetch the actual labor hours & cost within the period
@@ -825,16 +831,22 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 > The **Response** JSON structured like this:
 
 ```json
-[
-	{
-	    "date": "2016-06-24T00:00:00Z",
-	    "sales": 10743.43
-	},
-	{
-	    "date": "2016-06-25T00:00:00Z",
-	    "sales": 10743.43
-	}
-]
+{
+  "messages": [
+    "ANNUALLY PERFORMANCE HAS BEEN CALCULATED SUCCESSFULLY ..."
+  ],
+  "success": true,
+  "result": [
+		{
+		    "date": "2016-06-24T00:00:00Z",
+		    "sales": 10743.43
+		},
+		{
+		    "date": "2016-06-25T00:00:00Z",
+		    "sales": 10743.43
+		}
+	]
+}
 ```
 
 This endpoint fetch the actual sales within the period
