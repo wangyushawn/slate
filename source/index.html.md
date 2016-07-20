@@ -21,6 +21,47 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
 # Entity
 
 ## Slot
+> The **Slot** JSON structured like this:
+```json
+{  
+            "id":209,
+            "date":"2016-06-24T00:00:00Z",
+            "dayOfWeek":"FRIDAY",
+            "type":"SCHEDULE",
+            "offType":null,
+            "source":"PUBLISHED",
+            "owner":{  
+               "uid":1696,
+               "name":"fengping",
+               "email":"fengping.hu@percolata.com",
+               "phone":"18600613412"
+            },
+            "available":{  
+               "from":"2016-06-24T10:00:00Z",
+               "to":"2016-06-24T18:00:00Z",
+               "repeat":"NONE"
+            },
+            "shift":{  
+               "from":"2016-06-24T10:00:00Z",
+               "to":"2016-06-24T18:00:00Z",
+               "location":{  
+                  "corporateId":1,
+                  "districtId":3,
+                  "name":"UniQlo 508",
+                  "address":"111 Powell St, San Francisco, CA 94102"
+               },
+               "breaks":[  
+                  {  
+                     "type":"PAID",
+                     "start":"2016-06-24T12:00:00Z",
+                     "end":"2016-06-24T14:00:00Z"
+                  }
+               ]
+            },
+            "createdAt":"2016-06-19T18:51:23Z",
+            "updatedAt":"2016-06-24T08:05:23Z"
+         }
+```
 ### Description
 A **Slot** is a time slot for a employee representing its schedule of a specific day. It could be a **_AVAILABILITY_**, **_SHIFT_** or **_DAY OFF_**. 
 <aside class="warning">
@@ -28,26 +69,37 @@ Restricts: A employee can only have one for **Slot** each day.
 </aside>
 
 ### Attributes
-Attribute   | Sub-Attribute | Description
------------ |:-------------:| ------------
-id          |               | Unique ID of the **Slot**.
-date        |               | The date of the **Slot** belongs to.
-dayOfWeek   |               | The day of week of the date.
-type        |               | The type of the **Slot**, **_AVAILABILITY_**, **_SCHEDULE_**, **_DAYOFF_**.
-offType     |               | The request-off type
-source      |               | A status representing the source of **Slot**, **_PUBLISHED_**, **_EDITED_**, **_GENERATED_**.
-owner       |               | The attributes explicit the owner of **Slot**
-            | uid           | The __uid__ of the owner
-            | name          | The full name of the owner
-            | email         | The email address of the owner
-            | phone         | The phone number of the owner
-available   |               | Attribute that representing owner's availability of the __date__
-            | from          | The from date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
-            | to            | The to date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
-            | repeat        | A flag representing whether the availability is repeat. **_WEEKLY_**, **_NONE_**
-shift       |               | Attribute that representing owner's shift time of the __date__
-            | from          | The from date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
-            | to            | The to date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+Attribute   | Sub-Attribute | Sub-sub-Attrs	| Description
+----------- | ------------- | ------------- | ------------
+id          |               |				| Unique ID of the **Slot**.
+date        |               |				| The date of the **Slot** belongs to.
+dayOfWeek   |               |				| The day of week of the date.
+type        |               |				| The type of the **Slot**, **_AVAILABILITY_**, **_SCHEDULE_**, **_DAYOFF_**.
+offType     |               |				| The request-off type
+source      |               |				| A status representing the source of **Slot**, **_PUBLISHED_**, **_EDITED_**, **_GENERATED_**.
+owner       |               |				| The attributes explicit the owner of **Slot**
+            | uid           |				| The __uid__ of the owner
+            | name          |				| The full name of the owner
+            | email         |				| The email address of the owner
+            | phone         |				| The phone number of the owner
+available   |               |				| Attribute that representing owner's availability of the __date__
+            | from          |				| The from date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | to            |				| The to date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | repeat        |				| A flag representing whether the availability is repeat. **_WEEKLY_**, **_NONE_**
+shift       |               |				| Attribute that representing owner's shift time of the __date__
+            | from          |				| The from date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | to            |				| The to date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | location      |				| The work location of the shift
+            |       		| corporateId	| The Corporate ID of the shift location
+            |       		| districtId	| The District ID of the shift location
+            |       		| name			| The Name of the shift location
+            |       		| address		| The Address of the shift location
+            | breaks	    |				| A list of breaks indicates break times in this shift
+            |       		| type			| The **_Type_** of the break. **_PAID_**, **_UNPAID_**
+            |       		| start			| The start date time of the break. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            |       		| end			| The end date time of the break. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+createdAt   |               |               | The creation date time of the **Slot**
+updatedAt   |               |               | The update date time of the **Slot**
 
 # Schedules
 
