@@ -20,8 +20,48 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Daily Labors And Cost
+> The **Daily Labors & Cost** JSON structured like this:
+
+```json
+{
+    "date": "2016-06-24T00:00:00Z",
+    "hours": 48.0,
+    "cost": 743.5
+}
+```
+
+### Description
+The **actual** daily labor hours and cost of a Store
+
+### Attributes
+Attribute   	| Description
+--------------- | ------------
+date            | The date of the **_Daily Labors & Cost_**
+hours           | The accumulative labor hours of the date from a store
+cost            | The accumulative labor cost of the date from a store
+
+## Daily Sales
+> The **Daily Sales** JSON structured like this:
+
+```json
+{
+    "date": "2016-06-24T00:00:00Z",
+    "sales": 10743.43
+}
+```
+
+### Description
+The **actual** daily sales of a Store
+
+### Attributes
+Attribute   	| Description
+--------------- | ------------
+date            | The date of the **_Daily Sales_**
+sales           | The accumulative sales of the date from a store
+
 ## Retail Performance
-> The **Retail Performance** JSON structured ike this:
+> The **Retail Performance** JSON structured like this:
 
 ```json
 {
@@ -100,7 +140,7 @@ The edits cache is for front-end to help user[Manager] temporarily store the sch
 ### Attributes
 Attribute   | Description
 ----------- | ------------
-date        | The from date time of availability. __ISO RFC3336__ Date with zone offset.
+date        | The date of availability. __ISO RFC3336__ Date with zone offset.
 cache       | The free text contains schedules edits from user[Manager]
 
 ## Slot
@@ -744,4 +784,70 @@ Parameter   | Value Type | Description
 from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 
+## fetch actual labors & cost of store
 
+### HTTP Request
+> The **Response** JSON structured like this:
+
+```json
+[
+	{
+	    "date": "2016-06-24T00:00:00Z",
+	    "hours": 48.0,
+	    "cost": 743.5
+	},
+	{
+	    "date": "2016-06-25T00:00:00Z",
+	    "hours": 58.0,
+	    "cost": 1043.5
+	}
+]
+```
+
+This endpoint fetch the actual labor hours & cost within the period
+
+**_GET_** `/api/v2/m/performance/{districtid}/labors`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+## fetch actual sales of store
+
+### HTTP Request
+> The **Response** JSON structured like this:
+
+```json
+[
+	{
+	    "date": "2016-06-24T00:00:00Z",
+	    "sales": 10743.43
+	},
+	{
+	    "date": "2016-06-25T00:00:00Z",
+	    "sales": 10743.43
+	}
+]
+```
+
+This endpoint fetch the actual sales within the period
+
+**_GET_** `/api/v2/m/performance/{districtid}/sales`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
