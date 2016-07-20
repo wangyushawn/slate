@@ -3,9 +3,7 @@ title: API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
+  - java
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -19,171 +17,239 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Schedules
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
+## Get Schedules of Store
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{  
+   "messages":[  
+      "SCHEDULES FOR STORE HAVE BEEN PULLED SUCCESSFULLY"
+   ],
+   "success":true,
+   "result":{  
+      "from":"2016-06-21T00:00:00Z",
+      "to":"2016-06-28T00:00:00Z",
+      "schedules":[  
+         {  
+            "id":206,
+            "date":"2016-06-21T00:00:00Z",
+            "dayOfWeek":"TUESDAY",
+            "type":"DAYOFF",
+            "offType":null,
+            "source":"PUBLISHED",
+            "owner":{  
+               "uid":1696,
+               "name":"fengping",
+               "email":"fengping.hu@percolata.com",
+               "phone":"18600613412"
+            },
+            "available":{  
+               "from":"2016-06-21T09:00:00Z",
+               "to":"2016-06-21T22:00:00Z",
+               "repeat":"NONE"
+            },
+            "shift":null,
+            "createdAt":"2016-06-15T03:18:50Z",
+            "updatedAt":"2016-06-24T08:05:23Z"
+         },
+         {  
+            "id":208,
+            "date":"2016-06-23T00:00:00Z",
+            "dayOfWeek":"THURSDAY",
+            "type":"AVAILABILITY",
+            "offType":null,
+            "source":"PUBLISHED",
+            "owner":{  
+               "uid":1696,
+               "name":"fengping",
+               "email":"fengping.hu@percolata.com",
+               "phone":"18600613412"
+            },
+            "available":{  
+               "from":"2016-06-23T10:00:00Z",
+               "to":"2016-06-23T18:00:00Z",
+               "repeat":"NONE"
+            },
+            "shift":null,
+            "createdAt":"2016-06-19T18:50:59Z",
+            "updatedAt":"2016-06-24T08:05:23Z"
+         },
+         {  
+            "id":209,
+            "date":"2016-06-24T00:00:00Z",
+            "dayOfWeek":"FRIDAY",
+            "type":"SCHEDULE",
+            "offType":null,
+            "source":"PUBLISHED",
+            "owner":{  
+               "uid":1696,
+               "name":"fengping",
+               "email":"fengping.hu@percolata.com",
+               "phone":"18600613412"
+            },
+            "available":{  
+               "from":"2016-06-24T10:00:00Z",
+               "to":"2016-06-24T18:00:00Z",
+               "repeat":"NONE"
+            },
+            "shift":{  
+               "from":"2016-06-24T10:00:00Z",
+               "to":"2016-06-24T18:00:00Z",
+               "location":{  
+                  "corporateId":1,
+                  "districtId":3,
+                  "name":"UniQlo 508",
+                  "address":"111 Powell St, San Francisco, CA 94102"
+               },
+               "breaks":[  
+                  {  
+                     "type":"PAID",
+                     "start":"2016-06-24T12:00:00Z",
+                     "end":"2016-06-24T14:00:00Z"
+                  }
+               ]
+            },
+            "createdAt":"2016-06-19T18:51:23Z",
+            "updatedAt":"2016-06-24T08:05:23Z"
+         },
+         {  
+            "id":null,
+            "date":"2016-06-22T00:00:00Z",
+            "dayOfWeek":"WEDNESDAY",
+            "type":"AVAILABILITY",
+            "offType":null,
+            "source":"PUBLISHED",
+            "owner":{  
+               "uid":1695,
+               "name":"Yidong zhang",
+               "email":"yidong.m8@percolata.com",
+               "phone":"112233"
+            },
+            "available":{  
+               "from":"2016-06-22T01:00:00Z",
+               "to":"2016-06-22T23:00:00Z",
+               "repeat":"WEEKLY"
+            },
+            "shift":null,
+            "createdAt":"2016-07-19T15:25:09.682Z",
+            "updatedAt":"2016-07-19T15:25:09.682Z"
+         }
+      ],
+      "staffing":[  
+      ]
+   }
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all Schedules within the from & to range. The staffing list would contains the information of employee who is inactived but has schedules in the range.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+**_GET_** `/api/v2/m/schedules/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
 
 ### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="warning">
+Restricts: [to] date must be after [from]
 </aside>
 
-## Get a Specific Kitten
+## Update Schedules of Store
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> The Response JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+{  
+   "messages":[  
+      "SCHEDULES HAVE BEEN UPDATED SUCCESSFULLY!"
+   ],
+   "success":true,
+   "result":
 }
 ```
 
 This endpoint retrieves a specific kitten.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+**_POST_** `/api/v2/m/schedules/{districtid}`
 
 ### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+> The **Request Body** Json structured like this:
+
+```json
+{  
+   "from":"2016-06-21T00:00:00Z",
+   "to":"2016-06-28T00:00:00Z",
+   "schedules":[  
+      {  
+         "id":206,
+         "date":"2016-06-21T00:00:00Z",
+         "dayOfWeek":"TUESDAY",
+         "type":"DAYOFF",
+         "offType":null,
+         "source":"PUBLISHED",
+         "owner":{  
+            "uid":1696,
+            "name":"fengping",
+            "email":"fengping.hu@percolata.com",
+            "phone":"18600613412"
+         },
+         "available":{  
+            "from":"2016-06-21T09:00:00Z",
+            "to":"2016-06-21T22:00:00Z",
+            "repeat":"NONE"
+         },
+         "shift":null,
+         "createdAt":"2016-06-15T03:18:50Z",
+         "updatedAt":"2016-06-24T08:05:23Z"
+      },
+      {  
+         "id":208,
+         "date":"2016-06-23T00:00:00Z",
+         "dayOfWeek":"THURSDAY",
+         "type":"AVAILABILITY",
+         "offType":null,
+         "source":"PUBLISHED",
+         "owner":{  
+            "uid":1696,
+            "name":"fengping",
+            "email":"fengping.hu@percolata.com",
+            "phone":"18600613412"
+         },
+         "available":{  
+            "from":"2016-06-23T10:00:00Z",
+            "to":"2016-06-23T18:00:00Z",
+            "repeat":"NONE"
+         },
+         "shift":null,
+         "createdAt":"2016-06-19T18:50:59Z",
+         "updatedAt":"2016-06-24T08:05:23Z"
+      }
+   ]
+} 
+```
+
+### Request Body
+Field       | Description
+ ---------- | -----------
+from        | **(Included)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          | **(Excluded)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+schedules   | A list of **_Slot_** Objects that contains the updates you want to publish
 
