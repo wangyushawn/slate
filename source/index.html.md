@@ -20,8 +20,72 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Retail Performance
+> The **Retail Performance** JSON structured ike this:
+
+```json
+{
+    "districtId": 0,
+    "basicMetrics": {
+      "walkIn": 41883,
+      "walkBy": 85545,
+      "goal": 651800.5999999999,
+      "sales": 653809.073638916,
+      "validSales": 638004.703207016,
+      "lastTermSales": 700264.045396544,
+      "transactionsCount": 7496,
+      "validTCount": 7408,
+      "budget": 42666.01000000008,
+      "laborHours": 1451.25,
+      "laborCost": 11134.900000000005,
+      "lastTermCost": 0.0,
+      "efficientSlots": 545,
+      "elapseSlots": 9107,
+      "updatedAt": "2016-07-20T06:29:06.233Z"
+    },
+    "completionRate": 1.003081423427527,
+    "captureRate": 0.3286797250211884,
+    "laborEfficiency": 0.05984407598550565,
+    "usedBudgetRate": 0.26097823536815334,
+    "shopperYield": 15.233023021441062,
+    "atv": 86.12374503334449,
+    "conversion": 0.17687367189551848
+}
+```
+
+### Description
+The retail performance is a bunch of metrics to evaluate the performance of the store.
+
+### Attributes
+Attribute   	|   Sub-Attribute 	| Description
+--------------- | ----------------- | ------------
+districtId  	|               	| The ID of the retail district
+completionRate	|               	| A metric to evaluate how well the retailer fulfilling the sales goal
+captureRate		|					| A metric to evaluate how well the retailer attracting customers
+laborEfficiency |					| A metric to evaluate how well the retailer allocating labors according the traffic
+usedBudgetRate	|					| A metric to show the percentage of used budget
+shopperYield	|					| A metric to show the overall performance of retailer
+atv				|					| A metric to show the average transaction value of the retailer
+conversion		|					| A metric to evaluate how well the retailer creating profit
+basicMetrics	|					| A bunch of basic metrics to show the performance of retailer
+				| walkIn			|
+				| walkBy			|
+				| goal				|
+				| sales 	        |
+				| validSales 		|
+				| lastTermSales 	|
+				| transactionsCount |
+				| validTCount 		|
+				| budget 			|
+				| laborHours 		|
+				| laborCost 		|
+				| lastTermCost 		|
+				| efficientSlots 	|
+				| elapseSlots 		|
+				| updatedAt 		|
+
 ## Cache
-> The **Cache** JSON structred like this:
+> The **Cache** JSON structured like this:
 
 ```json
 {
@@ -621,5 +685,63 @@ Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.
 
+# Retail Performance 
+
+## fetch Overall Performance of Store within the period
+
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "ANNUALLY PERFORMANCE HAS BEEN CALCULATED SUCCESSFULLY ..."
+  ],
+  "success": true,
+  "result": {
+    "districtId": 0,
+    "basicMetrics": {
+      "walkIn": 41883,
+      "walkBy": 85545,
+      "goal": 651800.5999999999,
+      "sales": 653809.073638916,
+      "validSales": 638004.703207016,
+      "lastTermSales": 700264.045396544,
+      "transactionsCount": 7496,
+      "validTCount": 7408,
+      "budget": 42666.01000000008,
+      "laborHours": 1451.25,
+      "laborCost": 11134.900000000005,
+      "lastTermCost": 0.0,
+      "efficientSlots": 545,
+      "elapseSlots": 9107,
+      "updatedAt": "2016-07-20T06:29:06.233Z"
+    },
+    "completionRate": 1.003081423427527,
+    "captureRate": 0.3286797250211884,
+    "laborEfficiency": 0.05984407598550565,
+    "usedBudgetRate": 0.26097823536815334,
+    "shopperYield": 15.233023021441062,
+    "atv": 86.12374503334449,
+    "conversion": 0.17687367189551848
+  }
+}
+```
+
+This endpoint retrieves the retail performances of a store.
+
+### HTTP Request
+
+**_GET_** `/api/v2/m/performance/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 
 
