@@ -35,6 +35,7 @@ The edits cache is for front-end to help user[Manager] temporarily store the sch
 
 ### Attributes
 Attribute   | Description
+----------- | ------------
 date        | The from date time of availability. __ISO RFC3336__ Date with zone offset.
 cache       | The free text contains schedules edits from user[Manager]
 
@@ -421,16 +422,6 @@ This endpoints deposits Schedules Edits of User[Manager] temporarily.
 
 **_POST_** `/api/v2/m/schedules/{districtid}/caches`
 
-### URL Parameters
-Parameter   | Description
- ---------- | -----------
-districtid  | The ID of district, a *Long* value.
-
-### Request Body
-Field       | Description
- ---------- | -----------
-caches      | A list of daily caches 
-
 > The **Request Body** Json structured like this:
 
 ```json
@@ -445,3 +436,14 @@ caches      | A list of daily caches
 	}
 ]
 ```
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       | Description
+ ---------- | -----------
+caches      | A list of daily caches 
+
