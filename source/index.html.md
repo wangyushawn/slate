@@ -21,48 +21,47 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
 # Entity
 
 ## Slot
-
 > The **Slot** JSON structured like this:
 
 ```json
 {  
-            "id":209,
-            "date":"2016-06-24T00:00:00Z",
-            "dayOfWeek":"FRIDAY",
-            "type":"SCHEDULE",
-            "offType":null,
-            "source":"PUBLISHED",
-            "owner":{  
-               "uid":1696,
-               "name":"fengping",
-               "email":"fengping.hu@percolata.com",
-               "phone":"18600613412"
-            },
-            "available":{  
-               "from":"2016-06-24T10:00:00Z",
-               "to":"2016-06-24T18:00:00Z",
-               "repeat":"NONE"
-            },
-            "shift":{  
-               "from":"2016-06-24T10:00:00Z",
-               "to":"2016-06-24T18:00:00Z",
-               "location":{  
-                  "corporateId":1,
-                  "districtId":3,
-                  "name":"UniQlo 508",
-                  "address":"111 Powell St, San Francisco, CA 94102"
-               },
-               "breaks":[  
-                  {  
-                     "type":"PAID",
-                     "start":"2016-06-24T12:00:00Z",
-                     "end":"2016-06-24T14:00:00Z"
-                  }
-               ]
-            },
-            "createdAt":"2016-06-19T18:51:23Z",
-            "updatedAt":"2016-06-24T08:05:23Z"
-         }
+    "id":209,
+    "date":"2016-06-24T00:00:00Z",
+    "dayOfWeek":"FRIDAY",
+    "type":"SCHEDULE",
+    "offType":null,
+    "source":"PUBLISHED",
+    "owner":{  
+       "uid":1696,
+       "name":"fengping",
+       "email":"fengping.hu@percolata.com",
+       "phone":"18600613412"
+    },
+    "available":{  
+       "from":"2016-06-24T10:00:00Z",
+       "to":"2016-06-24T18:00:00Z",
+       "repeat":"NONE"
+    },
+    "shift":{  
+       "from":"2016-06-24T10:00:00Z",
+       "to":"2016-06-24T18:00:00Z",
+       "location":{  
+          "corporateId":1,
+          "districtId":3,
+          "name":"UniQlo 508",
+          "address":"111 Powell St, San Francisco, CA 94102"
+       },
+       "breaks":[  
+          {  
+             "type":"PAID",
+             "start":"2016-06-24T12:00:00Z",
+             "end":"2016-06-24T14:00:00Z"
+          }
+       ]
+    },
+    "createdAt":"2016-06-19T18:51:23Z",
+    "updatedAt":"2016-06-24T08:05:23Z"
+ }
 ```
 ### Description
 
