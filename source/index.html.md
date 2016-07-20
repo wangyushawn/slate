@@ -21,7 +21,9 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
 # Entity
 
 ## Slot
+
 > The **Slot** JSON structured like this:
+
 ```json
 {  
             "id":209,
@@ -63,7 +65,9 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
          }
 ```
 ### Description
+
 A **Slot** is a time slot for a employee representing its schedule of a specific day. It could be a **_AVAILABILITY_**, **_SHIFT_** or **_DAY OFF_**. 
+
 <aside class="warning">
 Restricts: A employee can only have one for **Slot** each day.
 </aside>
@@ -104,6 +108,7 @@ updatedAt   |               |               | The update date time of the **Slot
 # Schedules
 
 ## Get Schedules of Store
+
 > The **Response** JSON structured like this:
 
 ```json
