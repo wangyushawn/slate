@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs:
-  - shell
+  - HTTP
   - java
 
 toc_footers:
@@ -18,11 +18,41 @@ search: true
 # Introduction
 
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
+# Entity
+
+## Slot
+### Description
+A **Slot** is a time slot for a employee representing its schedule of a specific day. It could be a **_AVAILABILITY_**, **_SHIFT_** or **_DAY OFF_**. 
+<aside class="warning">
+Restricts: A employee can only have one for **Slot** each day.
+</aside>
+
+### Attributes
+Attribute   | Sub-Attribute | Description
+----------- |:-------------:| ------------
+id          |               | Unique ID of the **Slot**.
+date        |               | The date of the **Slot** belongs to.
+dayOfWeek   |               | The day of week of the date.
+type        |               | The type of the **Slot**, **_AVAILABILITY_**, **_SCHEDULE_**, **_DAYOFF_**.
+offType     |               | The request-off type
+source      |               | A status representing the source of **Slot**, **_PUBLISHED_**, **_EDITED_**, **_GENERATED_**.
+owner       |               | The attributes explicit the owner of **Slot**
+            | uid           | The __uid__ of the owner
+            | name          | The full name of the owner
+            | email         | The email address of the owner
+            | phone         | The phone number of the owner
+available   |               | Attribute that representing owner's availability of the __date__
+            | from          | The from date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | to            | The to date time of availability. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | repeat        | A flag representing whether the availability is repeat. **_WEEKLY_**, **_NONE_**
+shift       |               | Attribute that representing owner's shift time of the __date__
+            | from          | The from date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+            | to            | The to date time of shift. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 
 # Schedules
 
 ## Get Schedules of Store
-> The above command returns JSON structured like this:
+> The **Response** JSON structured like this:
 
 ```json
 {  
@@ -168,7 +198,7 @@ Restricts: [to] date must be after [from]
 
 ## Update Schedules of Store
 
-> The Response JSON structured like this:
+> The **Response** JSON structured like this:
 
 ```json
 {  
@@ -252,4 +282,3 @@ Field       | Description
 from        | **(Included)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 to          | **(Excluded)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 schedules   | A list of **_Slot_** Objects that contains the updates you want to publish
-
