@@ -152,7 +152,7 @@ wages 				| The wages of the Employee
 wagesType			| The Type of the Wages. **_MONTHLY_**, **_WEEKLY_**, **_HOURLY_**, **_BI_WEEKLY_**, **_BI_MONTHLY_**, **_ANNUALLY_**
 commission			| The commission rate of the Employee
 field				| Whether the Employee is a on field worker
-employmentStatus	| The Employee's Employment Status. E.g.: **_FULLTIME_**, **_PARTTIME_**
+employmentStatus	| The Employee's Employment Status. E.g.: **_FULLTIME_**, **_PARTTIME_**, **_SUSPEND_**
 position			| The **Position** of the Employee
 avatar				| The avatar of the Employee
 
@@ -1918,3 +1918,65 @@ Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.
 
+
+## Update Informations of Staff
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "STAFFING HAS BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": null
+}
+```
+
+### HTTP Request
+**_PUT_** `/api/v2/m/staffing/{districtid}`
+
+> The **Request Body** Json structured like this:
+
+```json
+{
+  "uid": 32,
+  "name": "alpha11",
+  "email": "alpha11@calendar.percolata.com",
+  "phone": "4084751649",
+  "districtId": null,
+  "weeklyMaxHours": 40,
+  "weeklyMinHours": 0,
+  "wages": 15,
+  "wagesType": "HOURLY",
+  "commission": 0.1,
+  "field": false,
+  "employmentStatus": "FULLTIME",
+  "position": {
+    "id": 32
+  }
+}
+```
+
+This endpoint will update some information of the employee
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       		| optional? | Description
+------------------- | --------- | ---------------
+uid					|			| The User Id of the Employee
+name				|			| The name of the Employee
+email				| optional	| The email of the Employee
+phone				| optional	| The phone of the Employee
+districtId			|			| The ID of the District the Employee work at
+weeklyMaxHours		| optional	| The Weekly Max working hours of the Employee
+weeklyMinHours		| optional	| The Weekly Min working hours of the Employee
+wages 				| optional	| The wages of the Employee
+wagesType			| optional	| The Type of the Wages. **_MONTHLY_**, **_WEEKLY_**, **_HOURLY_**, **_BI_WEEKLY_**, **_BI_MONTHLY_**, **_ANNUALLY_**
+commission			| optional	| The commission rate of the Employee
+field				| optional	| Whether the Employee is a on field worker
+employmentStatus	|			| The Employee's Employment Status. E.g.: **_FULLTIME_**, **_PARTTIME_**
+position			| optional	| The **Position** of the Employee
