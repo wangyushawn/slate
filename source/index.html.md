@@ -20,6 +20,315 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Store Details
+> The **Store Details** JSON structured like this:
+
+```json
+{
+  "bizHours": [
+    {
+      "storeId": 1,
+      "type": "OPEN",
+      "mon": "08:00:00",
+      "tues": "08:00:00",
+      "wed": "08:00:00",
+      "thur": "08:00:00",
+      "fri": "08:00:00",
+      "sat": "08:00:00",
+      "sun": "09:00:00"
+    },
+    {
+      "storeId": 1,
+      "type": "CLOSE",
+      "mon": "21:00:00",
+      "tues": "21:00:00",
+      "wed": "21:00:00",
+      "thur": "21:00:00",
+      "fri": "21:00:00",
+      "sat": "21:00:00",
+      "sun": "18:00:00"
+    }
+  ],
+  "timeZone": "America/Los_Angeles",
+  "address": "949 Industrial Ave, Palo Alto, CA 94303",
+  "name": "Percolata",
+  "icon": null,
+  "schedulers": null,
+  "trafficFormula": null,
+  "storeId": 1,
+  "locationId": 39,
+  "districtId": 1,
+  "corporateId": 1
+}
+```
+
+### Description
+The details information of Store, including Store Open&Close hours, time zone, location and others.
+
+### Attributes
+Attribute       | Description
+--------------- | ------------
+bizHours        | The Open & Close hours of Store
+timeZone        | The time zone ID of the store location. "US/Pacific"
+address         | The address of the store
+name            | The name of the store
+icon            | The path of Store Icon
+schedulers      | The scheduler algorithm which is used by store
+trafficFormula  | The traffic formula of the store
+storeId         | The ID of the Store
+locationId      | The location ID of the store
+districtId      | The District ID for the store location
+corporateId     | The Corporate ID of the store
+
+### Privilege 
+> The **Privilege** JSON structured like this:
+
+```json
+{
+  "title": null,
+  "viewOnDuty": true,
+  "viewOnCall": true,
+  "viewTodayNumbers": true,
+  "viewMonthNumbers": true,
+  "viewAnnualNumbers": true,
+  "viewSalesGoal": true,
+  "viewBudget": true,
+  "viewActualSales": true,
+  "viewLaborCost": true,
+  "viewHistogram": true,
+  "viewSchedules": true,
+  "editSchedules": true,
+  "includeLabors": true,
+  "reviewSchedules": true,
+  "publishSchedules": true,
+  "doubleApproval": false,
+  "viewRequests": true,
+  "reviewRequests": true,
+  "viewTeam": true,
+  "editTeam": true,
+  "viewTeamCompensation": true,
+  "viewTeamRanking": true,
+  "viewReports": true,
+  "viewSetting": true,
+  "editSetting": true,
+  "level": 0
+}
+```
+
+### Description
+The **Privilege** shows all the authority and priority of the Employee
+
+### Attributes
+Attribute             | Description
+--------------------- | ------------
+title                 | The **Title** of the Employee
+viewOnDuty            | Whether the Employee has authority to view [On duty] on Application
+viewOnCall            | Whether the Employee has authority to view [On Call] on Application
+viewTodayNumbers      | Whether the Employee has authority to view [Today Performance] on Application
+viewMonthNumbers      | Whether the Employee has authority to view [Monthly Performance] on Application
+viewAnnualNumbers     | Whether the Employee has authority to view [Annual Performance] on Application
+viewSalesGoal         | Whether the Employee has authority to view [Sales Goal] on Application
+viewBudget            | Whether the Employee has authority to view [Labor Budget] on Application
+viewActualSales       | Whether the Employee has authority to view [Actual Sales] on Application
+viewLaborCost         | Whether the Employee has authority to view [Labor Cost] on Application
+viewHistogram         | Whether the Employee has authority to view [Histogram] on Schedules Page
+viewSchedules         | Whether the Employee has authority to view [Schedules] on Schedules Page
+editSchedules         | Whether the Employee has authority to edit [Schedules] on Schedules Page
+includeLabors         | Whether the Employee should be included into labors calculation
+reviewSchedules       | Whether the Employee has authority to review [Schedules Plan]
+publishSchedules      | Whether the Employee has authority to publish [Schedules] on Schedules Page
+doubleApproval        | Whether the Schedules Plan from Employee need a Double Approval
+viewRequests          | Whether the Employee has authority to view Requests Page
+reviewRequests        | Whether the Employee has authority to review a Normal Request
+viewTeam              | Whether the Employee has authority to view Team Page
+editTeam              | Whether the Employee has authority to edit Staffing roster
+viewTeamCompensation  | Whether the Employee has authority to view the compensation of the staffs
+viewTeamRanking       | Whether the Employee has authority to view the ranking of the staffs
+viewReports           | Whether the Employee has authority to view Reports Page
+viewSetting           | Whether the Employee has authority to view Setting Page
+editSetting           | Whether the Employee has authority to edit Settings 
+level                 | The Position Level of the Employee
+
+## Access Control List
+> The **Access Control List** JSON structured like this:
+
+```json
+{
+  "uid": 34,
+  "corporateId": null,
+  "initialized": true,
+  "authorityLevel": null,
+  "authorities": [
+    "ROLE_STORE_MANAGER",
+    "ROLE_STORE_ASSOCIATE"
+  ],
+  "districtACLs": [
+    17,
+    1,
+    2,
+    3
+  ],
+  "storesMap": {
+    "1": {
+      "bizHours": [
+        {
+          "storeId": 1,
+          "type": "OPEN",
+          "mon": "08:00:00",
+          "tues": "08:00:00",
+          "wed": "08:00:00",
+          "thur": "08:00:00",
+          "fri": "08:00:00",
+          "sat": "08:00:00",
+          "sun": "09:00:00"
+        },
+        {
+          "storeId": 1,
+          "type": "CLOSE",
+          "mon": "21:00:00",
+          "tues": "21:00:00",
+          "wed": "21:00:00",
+          "thur": "21:00:00",
+          "fri": "21:00:00",
+          "sat": "21:00:00",
+          "sun": "18:00:00"
+        }
+      ],
+      "timeZone": "America/Los_Angeles",
+      "address": "949 Industrial Ave, Palo Alto, CA 94303",
+      "name": "Percolata",
+      "icon": null,
+      "schedulers": null,
+      "trafficFormula": null,
+      "storeId": 1,
+      "locationId": 39,
+      "districtId": 1,
+      "corporateId": 1
+    },
+    "2": {
+      "bizHours": [
+        {
+          "storeId": 2,
+          "type": "OPEN",
+          "mon": "09:00:00",
+          "tues": "09:00:00",
+          "wed": "09:00:00",
+          "thur": "09:00:00",
+          "fri": "09:00:00",
+          "sat": "09:00:00",
+          "sun": "10:00:00"
+        },
+        {
+          "storeId": 2,
+          "type": "CLOSE",
+          "mon": "22:00:00",
+          "tues": "22:00:00",
+          "wed": "22:00:00",
+          "thur": "22:00:00",
+          "fri": "22:00:00",
+          "sat": "22:00:00",
+          "sun": "19:00:00"
+        }
+      ],
+      "timeZone": "America/Los_Angeles",
+      "address": "2656 Richmond Ave, New York, NY 10314",
+      "name": "Test - San Francisco",
+      "icon": null,
+      "schedulers": "{\"SIMPLE\": \"GL\", \"LINEAR OPTIMIZER\": \"SHAUN\"}",
+      "trafficFormula": null,
+      "storeId": 2,
+      "locationId": 507,
+      "districtId": 2,
+      "corporateId": 1
+    },
+    "3": {
+      "bizHours": [
+        {
+          "storeId": 3,
+          "type": "OPEN",
+          "mon": "09:00:00",
+          "tues": "09:00:00",
+          "wed": "09:00:00",
+          "thur": "09:00:00",
+          "fri": "09:00:00",
+          "sat": "09:00:00",
+          "sun": "10:00:00"
+        },
+        {
+          "storeId": 3,
+          "type": "CLOSE",
+          "mon": "22:00:00",
+          "tues": "22:00:00",
+          "wed": "22:00:00",
+          "thur": "22:00:00",
+          "fri": "22:00:00",
+          "sat": "22:00:00",
+          "sun": "19:00:00"
+        }
+      ],
+      "timeZone": "America/Los_Angeles",
+      "address": "111 Powell St, San Francisco, CA 94102",
+      "name": "UniQlo 508",
+      "icon": null,
+      "schedulers": null,
+      "trafficFormula": null,
+      "storeId": 3,
+      "locationId": 508,
+      "districtId": 3,
+      "corporateId": 1
+    }
+  },
+  "privilege": {
+    "title": null,
+    "viewOnDuty": true,
+    "viewOnCall": true,
+    "viewTodayNumbers": true,
+    "viewMonthNumbers": true,
+    "viewAnnualNumbers": true,
+    "viewSalesGoal": true,
+    "viewBudget": true,
+    "viewActualSales": true,
+    "viewLaborCost": true,
+    "viewHistogram": true,
+    "viewSchedules": true,
+    "editSchedules": true,
+    "includeLabors": true,
+    "reviewSchedules": true,
+    "publishSchedules": true,
+    "doubleApproval": false,
+    "viewRequests": true,
+    "reviewRequests": true,
+    "viewTeam": true,
+    "editTeam": true,
+    "viewTeamCompensation": true,
+    "viewTeamRanking": true,
+    "viewReports": true,
+    "viewSetting": true,
+    "editSetting": true,
+    "level": 0
+  },
+  "expiredAt": "2016-07-20T12:25:46.447+0000",
+  "storeManager": false
+}
+```
+
+### Description
+The **Access Control List** of the Users, it shows the roles, privileges, authority and others.
+
+### Attributes
+Attribute       | Description
+--------------- | ------------
+uid             | The User's ID
+corporateId     | The ID of Corporate User belongs to
+initialized     | Whether the basic information of User has been initialized.
+authorityLevel  | The Authority Level of User
+authorities     | A List of Authorities of User
+districtACLs    | All the District ID User has authority on
+storesMap       | The **Stores Details** that User could manage
+privilege       | The **Privilege** of the User
+expiredAt       | The expiration time of the token
+storeManager    | Whether the User is a Store Manager
+
 ## Daily Labors And Cost
 > The **Daily Labors & Cost** JSON structured like this:
 
