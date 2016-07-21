@@ -80,7 +80,7 @@ locationId      | The location ID of the store
 districtId      | The District ID for the store location
 corporateId     | The Corporate ID of the store
 
-### Privilege 
+## Privilege 
 > The **Privilege** JSON structured like this:
 
 ```json
