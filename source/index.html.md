@@ -1635,6 +1635,7 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 # Financial Plans
 
 ## Fetch Financial Labor Plan
+> The **Response** JSON structured like this:
 
 ```json
 {
@@ -1669,6 +1670,7 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 
 
 ## Fetch Financial Sales Plan
+> The **Response** JSON structured like this:
 
 ```json
 {
@@ -1700,3 +1702,82 @@ Parameter   | Value Type | Description
 ----------- |:----------:| -----------
 from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+# Team & Staffing
+
+## Fetch Staffing roster of Store
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "STAFFING HAS BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": [
+        {
+          "uid": 32,
+          "name": "alpha11",
+          "email": "alpha11@calendar.percolata.com",
+          "phone": "4084751649",
+          "corporateId": 1,
+          "districtId": null,
+          "weeklyMaxHours": 40,
+          "weeklyMinHours": 0,
+          "wages": 15,
+          "wagesType": "HOURLY",
+          "commission": 0.1,
+          "field": false,
+          "employmentStatus": "FULLTIME",
+          "position": {
+            "id": 32,
+            "title": "SALES",
+            "level": 0,
+            "authorityLevel": "STORE_ASSOCIATE",
+            "privilege": {
+              "title": null,
+              "viewOnDuty": true,
+              "viewOnCall": true,
+              "viewTodayNumbers": true,
+              "viewMonthNumbers": true,
+              "viewAnnualNumbers": true,
+              "viewSalesGoal": true,
+              "viewBudget": true,
+              "viewActualSales": true,
+              "viewLaborCost": true,
+              "viewHistogram": true,
+              "viewSchedules": true,
+              "editSchedules": true,
+              "includeLabors": true,
+              "reviewSchedules": true,
+              "publishSchedules": true,
+              "doubleApproval": false,
+              "viewRequests": true,
+              "reviewRequests": true,
+              "viewTeam": true,
+              "editTeam": true,
+              "viewTeamCompensation": true,
+              "viewTeamRanking": true,
+              "viewReports": true,
+              "viewSetting": true,
+              "editSetting": true,
+              "level": 0
+            },
+            "sales": true
+          },
+          "avatar": null
+        }
+    ]
+}
+```
+
+This endpoints will fetch the staffing roster of the stores, which includes details of employee like wages, position, email, phone and others.
+
+### HTTP Request
+**_GET_** `/api/v2/m/staffing/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
