@@ -20,6 +20,52 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Periodic Sales Plan
+> The **Periodic Sales Plan** JSON structured like this:
+
+```json
+{
+  "from": "2016-06-30T17:00:00-07:00",
+  "to": "2016-07-31T17:00:00-07:00",
+  "productGoal": 245361.0,
+  "serviceGoal": 232156.0
+}
+```
+
+### Description
+The periodic financial Sales plan of store, indicates the sales goal of the certain period for store.
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+from            | the certain period from date,  __ISO RFC3336__ Date with zone offset.
+to              | the certain period to date,  __ISO RFC3336__ Date with zone offset.
+productGoal     | the product goals within the certain period for the store
+serviceGoal     | the service goals withnin the certain period for the store
+
+## Periodic Labors Plan
+> The **Periodic Labors Plan** JSON structured like this:
+
+```json
+{
+  "from": "2016-07-01T00:00:00-07:00",
+  "to": "2016-08-01T00:00:00-07:00",
+  "budget": 2750.5,
+  "laborHour": 475.25
+}
+```
+
+### Description
+The periodic financial labors plan of store, indicates the labor budget of the certain period for store.
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+from            | the certain period from date,  __ISO RFC3336__ Date with zone offset.
+to              | the certain period to date,  __ISO RFC3336__ Date with zone offset.
+budget          | the money budget amount within the certain period for the store
+laborHours      | the labor hours budget amount withnin the certain period for the store
+
 ## Store Details
 > The **Store Details** JSON structured like this:
 
@@ -1549,8 +1595,6 @@ from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2
 to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 
 ## fetch actual sales of store
-
-### HTTP Request
 > The **Response** JSON structured like this:
 
 ```json
@@ -1574,7 +1618,77 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 
 This endpoint fetch the actual sales within the period
 
+### HTTP Request
 **_GET_** `/api/v2/m/performance/{districtid}/sales`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+# Financial Plans
+
+## Fetch Financial Labor Plan
+
+```json
+{
+  "messages": [
+    "LABOR PLAN HAS BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": {
+    "from": "2016-07-01T00:00:00-07:00",
+    "to": "2016-08-01T00:00:00-07:00",
+    "budget": 0,
+    "laborHour": 0
+  }
+}
+```
+
+This endpoint will fetch the labor plan of the store within the period, which indicates the labor budget of the store for a certain period
+
+### HTTP Request
+**_GET_** `/api/v2/m/financial/{districtid}/budget`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+
+## Fetch Financial Sales Plan
+
+```json
+{
+  "messages": [
+    "SALES PLAN HAS BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": {
+    "from": "2016-06-30T17:00:00-07:00",
+    "to": "2016-07-31T17:00:00-07:00",
+    "productGoal": 0,
+    "serviceGoal": 0
+  }
+}
+```
+
+This endpoint will fetch the sales plan of the store within the period, which indicates the sales goal of the store for a certain period.
+
+### HTTP Request
+**_GET_** `/api/v2/m/financial/{districtid}/goal`
 
 ### URL Parameters
 Parameter   | Description
