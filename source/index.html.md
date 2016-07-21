@@ -20,6 +20,143 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Position
+> The **Position** JSON structured like this:
+
+```json
+{
+  "id": 32,
+  "title": "SALES",
+  "level": 0,
+  "authorityLevel": "STORE_ASSOCIATE",
+  "privilege": {
+    "title": null,
+    "viewOnDuty": true,
+    "viewOnCall": true,
+    "viewTodayNumbers": true,
+    "viewMonthNumbers": true,
+    "viewAnnualNumbers": true,
+    "viewSalesGoal": true,
+    "viewBudget": true,
+    "viewActualSales": true,
+    "viewLaborCost": true,
+    "viewHistogram": true,
+    "viewSchedules": true,
+    "editSchedules": true,
+    "includeLabors": true,
+    "reviewSchedules": true,
+    "publishSchedules": true,
+    "doubleApproval": false,
+    "viewRequests": true,
+    "reviewRequests": true,
+    "viewTeam": true,
+    "editTeam": true,
+    "viewTeamCompensation": true,
+    "viewTeamRanking": true,
+    "viewReports": true,
+    "viewSetting": true,
+    "editSetting": true,
+    "level": 0
+  },
+  "sales": true
+}
+```
+
+### Description
+The description of position of the Corporate
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+id				| The ID of the Position
+title			| The title of the Position
+level 			| The priority level of the Position
+authorityLevel	| The Authority Level of the Position. E.g.: **_STORE_MANAGER_**, **_STORE_ASSOCIATE_**, **_DISTRICT_MANAGER_**
+privilege		| The **Privilege** of the Position
+sales			| Whether the Position is a sales-like position
+
+
+## Staff Infos
+> The **Staff Infos** JSON structured like this:
+
+```json
+{
+  "uid": 32,
+  "name": "alpha11",
+  "email": "alpha11@calendar.percolata.com",
+  "phone": "4084751649",
+  "corporateId": 1,
+  "districtId": null,
+  "weeklyMaxHours": 40,
+  "weeklyMinHours": 0,
+  "wages": 15,
+  "wagesType": "HOURLY",
+  "commission": 0.1,
+  "field": false,
+  "employmentStatus": "FULLTIME",
+  "position": {
+    "id": 32,
+    "title": "SALES",
+    "level": 0,
+    "authorityLevel": "STORE_ASSOCIATE",
+    "privilege": {
+      "title": null,
+      "viewOnDuty": true,
+      "viewOnCall": true,
+      "viewTodayNumbers": true,
+      "viewMonthNumbers": true,
+      "viewAnnualNumbers": true,
+      "viewSalesGoal": true,
+      "viewBudget": true,
+      "viewActualSales": true,
+      "viewLaborCost": true,
+      "viewHistogram": true,
+      "viewSchedules": true,
+      "editSchedules": true,
+      "includeLabors": true,
+      "reviewSchedules": true,
+      "publishSchedules": true,
+      "doubleApproval": false,
+      "viewRequests": true,
+      "reviewRequests": true,
+      "viewTeam": true,
+      "editTeam": true,
+      "viewTeamCompensation": true,
+      "viewTeamRanking": true,
+      "viewReports": true,
+      "viewSetting": true,
+      "editSetting": true,
+      "level": 0
+    },
+    "sales": true
+  },
+  "avatar": null
+}
+```
+
+### Description
+The details of a Employee, including email, name, phone, weeklyMinHours and others
+
+### Attributes
+Attribute       	| Description
+------------------- | ---------------
+uid					| The User Id of the Employee
+name				| The name of the Employee
+email				| The email of the Employee
+phone				| The phone of the Employee
+corporateId			| The ID of the Corporate the Employee belongs to
+districtId			| The ID of the District the Employee work at
+weeklyMaxHours		| The Weekly Max working hours of the Employee
+weeklyMinHours		| The Weekly Min working hours of the Employee
+wages 				| The wages of the Employee
+wagesType			| The Type of the Wages. **_MONTHLY_**, **_WEEKLY_**, **_HOURLY_**, **_BI_WEEKLY_**, **_BI_MONTHLY_**, **_ANNUALLY_**
+commission			| The commission rate of the Employee
+field				| Whether the Employee is a on field worker
+employmentStatus	| The Employee's Employment Status. E.g.: **_FULLTIME_**, **_PARTTIME_**
+position			| The **Position** of the Employee
+avatar				| The avatar of the Employee
+
+
 ## Periodic Sales Plan
 > The **Periodic Sales Plan** JSON structured like this:
 
