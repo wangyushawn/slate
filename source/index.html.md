@@ -509,7 +509,7 @@ Attribute   | Sub-Attribute | Sub-sub-Attrs	| Description
 id          |               |				| Unique ID of the **Slot**.
 date        |               |				| The date of the **Slot** belongs to.
 dayOfWeek   |               |				| The day of week of the date.
-type        |               |				| The type of the **Slot**, **_AVAILABILITY_**, **_SCHEDULE_**, **_DAYOFF_**.
+type        |               |				| The type of the **Slot**, **_AVAILABILITY_**, **_SCHEDULE_**, **_DAYOFF_**, **_OCCUPIED_**.
 offType     |               |				| The request-off type
 source      |               |				| A status representing the source of **Slot**, **_PUBLISHED_**, **_EDITED_**, **_GENERATED_**.
 owner       |               |				| The attributes explicit the owner of **Slot**
@@ -535,6 +535,430 @@ shift       |               |				| Attribute that representing owner's shift tim
             |       		| end			| The end date time of the break. __ISO RFC3336__ Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
 createdAt   |               |               | The creation date time of the **Slot**
 updatedAt   |               |               | The update date time of the **Slot**
+
+# ACL (Access Control List)
+
+## Get ACL of User
+
+> The **Response** JSON structured like this:
+
+```json
+{  
+   "messages":[  
+      "SCHEDULES FOR STORE HAVE BEEN PULLED SUCCESSFULLY"
+   ],
+   "success":true,
+   "result":{
+  "messages": [
+    "ACLs has been fetched!"
+  ],
+  "success": true,
+  "result": {
+	    "uid": 34,
+	    "corporateId": null,
+	    "initialized": true,
+	    "authorityLevel": null,
+	    "authorities": [
+	      "ROLE_STORE_MANAGER",
+	      "ROLE_STORE_ASSOCIATE"
+	    ],
+	    "districtACLs": [
+	      17,
+	      1,
+	      2,
+	      3
+	    ],
+	    "storesMap": {
+	      "1": {
+	        "bizHours": [
+	          {
+	            "storeId": 1,
+	            "type": "OPEN",
+	            "mon": "08:00:00",
+	            "tues": "08:00:00",
+	            "wed": "08:00:00",
+	            "thur": "08:00:00",
+	            "fri": "08:00:00",
+	            "sat": "08:00:00",
+	            "sun": "09:00:00"
+	          },
+	          {
+	            "storeId": 1,
+	            "type": "CLOSE",
+	            "mon": "21:00:00",
+	            "tues": "21:00:00",
+	            "wed": "21:00:00",
+	            "thur": "21:00:00",
+	            "fri": "21:00:00",
+	            "sat": "21:00:00",
+	            "sun": "18:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "949 Industrial Ave, Palo Alto, CA 94303",
+	        "name": "Percolata",
+	        "icon": null,
+	        "schedulers": null,
+	        "trafficFormula": null,
+	        "storeId": 1,
+	        "locationId": 39,
+	        "districtId": 1,
+	        "corporateId": 1
+	      },
+	      "2": {
+	        "bizHours": [
+	          {
+	            "storeId": 2,
+	            "type": "OPEN",
+	            "mon": "09:00:00",
+	            "tues": "09:00:00",
+	            "wed": "09:00:00",
+	            "thur": "09:00:00",
+	            "fri": "09:00:00",
+	            "sat": "09:00:00",
+	            "sun": "10:00:00"
+	          },
+	          {
+	            "storeId": 2,
+	            "type": "CLOSE",
+	            "mon": "22:00:00",
+	            "tues": "22:00:00",
+	            "wed": "22:00:00",
+	            "thur": "22:00:00",
+	            "fri": "22:00:00",
+	            "sat": "22:00:00",
+	            "sun": "19:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "2656 Richmond Ave, New York, NY 10314",
+	        "name": "Test - San Francisco",
+	        "icon": null,
+	        "schedulers": "{\"SIMPLE\": \"GL\", \"LINEAR OPTIMIZER\": \"SHAUN\"}",
+	        "trafficFormula": null,
+	        "storeId": 2,
+	        "locationId": 507,
+	        "districtId": 2,
+	        "corporateId": 1
+	      },
+	      "3": {
+	        "bizHours": [
+	          {
+	            "storeId": 3,
+	            "type": "OPEN",
+	            "mon": "09:00:00",
+	            "tues": "09:00:00",
+	            "wed": "09:00:00",
+	            "thur": "09:00:00",
+	            "fri": "09:00:00",
+	            "sat": "09:00:00",
+	            "sun": "10:00:00"
+	          },
+	          {
+	            "storeId": 3,
+	            "type": "CLOSE",
+	            "mon": "22:00:00",
+	            "tues": "22:00:00",
+	            "wed": "22:00:00",
+	            "thur": "22:00:00",
+	            "fri": "22:00:00",
+	            "sat": "22:00:00",
+	            "sun": "19:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "111 Powell St, San Francisco, CA 94102",
+	        "name": "UniQlo 508",
+	        "icon": null,
+	        "schedulers": null,
+	        "trafficFormula": null,
+	        "storeId": 3,
+	        "locationId": 508,
+	        "districtId": 3,
+	        "corporateId": 1
+	      }
+	    },
+	    "privilege": {
+	      "title": null,
+	      "viewOnDuty": true,
+	      "viewOnCall": true,
+	      "viewTodayNumbers": true,
+	      "viewMonthNumbers": true,
+	      "viewAnnualNumbers": true,
+	      "viewSalesGoal": true,
+	      "viewBudget": true,
+	      "viewActualSales": true,
+	      "viewLaborCost": true,
+	      "viewHistogram": true,
+	      "viewSchedules": true,
+	      "editSchedules": true,
+	      "includeLabors": true,
+	      "reviewSchedules": true,
+	      "publishSchedules": true,
+	      "doubleApproval": false,
+	      "viewRequests": true,
+	      "reviewRequests": true,
+	      "viewTeam": true,
+	      "editTeam": true,
+	      "viewTeamCompensation": true,
+	      "viewTeamRanking": true,
+	      "viewReports": true,
+	      "viewSetting": true,
+	      "editSetting": true,
+	      "level": 0
+	    },
+	    "expiredAt": "2016-07-20T12:25:46.447+0000",
+	    "storeManager": false
+	  }
+	}
+}
+```
+
+This endpoint retrieves current user's ACL, it contains its authorities, position, level and others.
+
+### HTTP Request
+
+**_GET_** `/api/v2/acl`
+
+## Refresh ACL of User
+> The **Response** JSON structured like this:
+
+```json
+{  
+   "messages":[  
+      "SCHEDULES FOR STORE HAVE BEEN PULLED SUCCESSFULLY"
+   ],
+   "success":true,
+   "result":{
+  "messages": [
+    "ACLs has been fetched!"
+  ],
+  "success": true,
+  "result": {
+	    "uid": 34,
+	    "corporateId": null,
+	    "initialized": true,
+	    "authorityLevel": null,
+	    "authorities": [
+	      "ROLE_STORE_MANAGER",
+	      "ROLE_STORE_ASSOCIATE"
+	    ],
+	    "districtACLs": [
+	      17,
+	      1,
+	      2,
+	      3
+	    ],
+	    "storesMap": {
+	      "1": {
+	        "bizHours": [
+	          {
+	            "storeId": 1,
+	            "type": "OPEN",
+	            "mon": "08:00:00",
+	            "tues": "08:00:00",
+	            "wed": "08:00:00",
+	            "thur": "08:00:00",
+	            "fri": "08:00:00",
+	            "sat": "08:00:00",
+	            "sun": "09:00:00"
+	          },
+	          {
+	            "storeId": 1,
+	            "type": "CLOSE",
+	            "mon": "21:00:00",
+	            "tues": "21:00:00",
+	            "wed": "21:00:00",
+	            "thur": "21:00:00",
+	            "fri": "21:00:00",
+	            "sat": "21:00:00",
+	            "sun": "18:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "949 Industrial Ave, Palo Alto, CA 94303",
+	        "name": "Percolata",
+	        "icon": null,
+	        "schedulers": null,
+	        "trafficFormula": null,
+	        "storeId": 1,
+	        "locationId": 39,
+	        "districtId": 1,
+	        "corporateId": 1
+	      },
+	      "2": {
+	        "bizHours": [
+	          {
+	            "storeId": 2,
+	            "type": "OPEN",
+	            "mon": "09:00:00",
+	            "tues": "09:00:00",
+	            "wed": "09:00:00",
+	            "thur": "09:00:00",
+	            "fri": "09:00:00",
+	            "sat": "09:00:00",
+	            "sun": "10:00:00"
+	          },
+	          {
+	            "storeId": 2,
+	            "type": "CLOSE",
+	            "mon": "22:00:00",
+	            "tues": "22:00:00",
+	            "wed": "22:00:00",
+	            "thur": "22:00:00",
+	            "fri": "22:00:00",
+	            "sat": "22:00:00",
+	            "sun": "19:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "2656 Richmond Ave, New York, NY 10314",
+	        "name": "Test - San Francisco",
+	        "icon": null,
+	        "schedulers": "{\"SIMPLE\": \"GL\", \"LINEAR OPTIMIZER\": \"SHAUN\"}",
+	        "trafficFormula": null,
+	        "storeId": 2,
+	        "locationId": 507,
+	        "districtId": 2,
+	        "corporateId": 1
+	      },
+	      "3": {
+	        "bizHours": [
+	          {
+	            "storeId": 3,
+	            "type": "OPEN",
+	            "mon": "09:00:00",
+	            "tues": "09:00:00",
+	            "wed": "09:00:00",
+	            "thur": "09:00:00",
+	            "fri": "09:00:00",
+	            "sat": "09:00:00",
+	            "sun": "10:00:00"
+	          },
+	          {
+	            "storeId": 3,
+	            "type": "CLOSE",
+	            "mon": "22:00:00",
+	            "tues": "22:00:00",
+	            "wed": "22:00:00",
+	            "thur": "22:00:00",
+	            "fri": "22:00:00",
+	            "sat": "22:00:00",
+	            "sun": "19:00:00"
+	          }
+	        ],
+	        "timeZone": "America/Los_Angeles",
+	        "address": "111 Powell St, San Francisco, CA 94102",
+	        "name": "UniQlo 508",
+	        "icon": null,
+	        "schedulers": null,
+	        "trafficFormula": null,
+	        "storeId": 3,
+	        "locationId": 508,
+	        "districtId": 3,
+	        "corporateId": 1
+	      }
+	    },
+	    "privilege": {
+	      "title": null,
+	      "viewOnDuty": true,
+	      "viewOnCall": true,
+	      "viewTodayNumbers": true,
+	      "viewMonthNumbers": true,
+	      "viewAnnualNumbers": true,
+	      "viewSalesGoal": true,
+	      "viewBudget": true,
+	      "viewActualSales": true,
+	      "viewLaborCost": true,
+	      "viewHistogram": true,
+	      "viewSchedules": true,
+	      "editSchedules": true,
+	      "includeLabors": true,
+	      "reviewSchedules": true,
+	      "publishSchedules": true,
+	      "doubleApproval": false,
+	      "viewRequests": true,
+	      "reviewRequests": true,
+	      "viewTeam": true,
+	      "editTeam": true,
+	      "viewTeamCompensation": true,
+	      "viewTeamRanking": true,
+	      "viewReports": true,
+	      "viewSetting": true,
+	      "editSetting": true,
+	      "level": 0
+	    },
+	    "expiredAt": "2016-07-20T12:25:46.447+0000",
+	    "storeManager": false
+	  }
+	}
+}
+```
+
+This endpoint refreshes and retrieves current user's ACL.
+
+### HTTP Request
+
+**_GET_** `/api/v2/acl/refresh`
+
+## Get Store Details
+
+> The **Response** JSON structured like this:
+
+```json
+{  
+  "messages": [
+    "ACLs has been fetched!"
+  ],
+  "success": true,
+  "result": {
+	  "bizHours": [
+	    {
+	      "storeId": 1,
+	      "type": "OPEN",
+	      "mon": "08:00:00",
+	      "tues": "08:00:00",
+	      "wed": "08:00:00",
+	      "thur": "08:00:00",
+	      "fri": "08:00:00",
+	      "sat": "08:00:00",
+	      "sun": "09:00:00"
+	    },
+	    {
+	      "storeId": 1,
+	      "type": "CLOSE",
+	      "mon": "21:00:00",
+	      "tues": "21:00:00",
+	      "wed": "21:00:00",
+	      "thur": "21:00:00",
+	      "fri": "21:00:00",
+	      "sat": "21:00:00",
+	      "sun": "18:00:00"
+	    }
+	  ],
+	  "timeZone": "America/Los_Angeles",
+	  "address": "949 Industrial Ave, Palo Alto, CA 94303",
+	  "name": "Percolata",
+	  "icon": null,
+	  "schedulers": null,
+	  "trafficFormula": null,
+	  "storeId": 1,
+	  "locationId": 39,
+	  "districtId": 1,
+	  "corporateId": 1
+	}
+}
+```
+This endpoint refreshes and retrieves current user's ACL.
+
+### HTTP Request
+
+**_GET_** `/api/v2/acl/stores/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
 
 # Schedules
 
