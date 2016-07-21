@@ -544,11 +544,6 @@ updatedAt   |               |               | The update date time of the **Slot
 
 ```json
 {  
-   "messages":[  
-      "SCHEDULES FOR STORE HAVE BEEN PULLED SUCCESSFULLY"
-   ],
-   "success":true,
-   "result":{
   "messages": [
     "ACLs has been fetched!"
   ],
@@ -725,11 +720,6 @@ This endpoint retrieves current user's ACL, it contains its authorities, positio
 
 ```json
 {  
-   "messages":[  
-      "SCHEDULES FOR STORE HAVE BEEN PULLED SUCCESSFULLY"
-   ],
-   "success":true,
-   "result":{
   "messages": [
     "ACLs has been fetched!"
   ],
