@@ -1980,3 +1980,100 @@ commission			| optional	| The commission rate of the Employee
 field				| optional	| Whether the Employee is a on field worker
 employmentStatus	|			| The Employee's Employment Status. E.g.: **_FULLTIME_**, **_PARTTIME_**
 position			| optional	| The **Position** of the Employee
+
+# Retail Traffic
+
+## Fetch Store Traffic
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "TRAFFICS HAVE BEEN FETCHED SUCCESSFULLY!"
+  ],
+  "success": true,
+  "result": [
+    {
+      "occupancy": 0,
+      "walkin": 0,
+      "walkOut": 1,
+      "time": "2016-01-01T18:00:00.000+0000",
+      "timeISO": "2016-01-01T10:00:00Z"
+    },
+    {
+      "occupancy": 1,
+      "walkin": 1,
+      "walkOut": 2,
+      "time": "2016-01-01T18:15:00.000+0000",
+      "timeISO": "2016-01-01T10:15:00Z"
+    }
+  ]
+}
+```
+
+This endpoint will fetch all the traffic of the store within the period
+
+### HTTP Request
+**_GET_** `/api/v2/m/traffics/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+
+
+## Fetch Store Customized Demands
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "DEMANDS HAVE BEEN FETCHED SUCCESSFULLY!"
+  ],
+  "success": true,
+  "result": [
+    {
+      "occupancy": 0,
+      "walkin": 0,
+      "walkOut": 1,
+      "time": "2016-01-01T18:00:00.000+0000",
+      "timeISO": "2016-01-01T10:00:00Z"
+    },
+    {
+      "occupancy": 1,
+      "walkin": 1,
+      "walkOut": 2,
+      "time": "2016-01-01T18:15:00.000+0000",
+      "timeISO": "2016-01-01T10:15:00Z"
+    }
+  ]
+}
+```
+
+This endpoint will fetch all the demands of the store within the period
+
+### HTTP Request
+**_GET_** `/api/v2/m/demands/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+
+
+
+
