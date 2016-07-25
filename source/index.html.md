@@ -2075,5 +2075,130 @@ to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2
 
 
 
+# Setting
+## Fetch Store Setting
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "STORE SETTING HAS BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": {
+    "id": 1,
+    "storeId": 3,
+    "weeklyOvertimePayRate": 1.5,
+    "dailyOvertimePayRate": 1.5,
+    "weeklyHourLimit": 40,
+    "dailyHourLimit": 8,
+    "paidBreak": "30/3",
+    "unpaidBreak": "15/5",
+    "notifySAOpenShift": "MAIL",
+    "notifySAShiftReminder": "MAIL",
+    "notifySASignUp": "MAIL",
+    "notifySASchedulesChanges": "MAIL"
+  }
+}
+```
+
+This endpoint will fetch the setting of the Store
+
+### HTTP Request
+**_GET_** `/api/v2/m/setting/{districtid}/store`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+## Update Store Setting
+> The **Response** JSON structured like this:
+
+```json
+
+```
+
+### HTTP Request
+**_POST_** `/api/v2/m/setting/{districtid}/store`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       		            | optional? | Description
+------------------------------- | --------- | ---------------
+id                              |           | The ID of the Store Setting
+storeId                         |           | The ID of The Store
+weeklyOvertimePayRate           |           | The Weekly Overtime Pay rate
+dailyOvertimePayRate            |           | The Daily Overtime Pay rate
+weeklyHourLimit                 |           | The Weekly working hours limit for a Employee
+dailyHourLimit                  |           | The daily working hours limit for a Employee
+paidBreak                       |           | Breaks limit of Paid Type
+unpaidBreak                     |           | Breaks limit of UnPaid Type
+notifySAOpenShift               |           | Whether alerts Associate when a Open Shift become available
+notifySAShiftReminder           |           | Whether remind store associates 2 hours in advance when their shift will start                           
+notifySASignUp                  |           | Whether remind associates daily to sign up until they finally do
+notifySASchedulesChanges        |           | Whether remind associates when his/her schedules have been changed
+
+## Fetch Manager Setting of a Store
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MANAGER SETTING OF STORE#3 HAS BEEN FETCHED SUCCESSFULLY FOR USER#34"
+  ],
+  "success": true,
+  "result": {
+    "id": 1,
+    "uid": 34,
+    "storeId": 3,
+    "laborThreshold": 2,
+    "star": 6,
+    "startWeekDay": "TUESDAY",
+    "notifyNewRequest": "MAIL",
+    "notifyIdleAssociate": "MAIL",
+    "notifyWeeklySummary": "MAIL",
+    "notifyPasswordChanged": "NONE"
+  }
+}
+```
+
+### HTTP Request
+**_GET_** `/api/v2/m/setting/{districtid}/manager`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+
+## Update Manager Setting
+
+### HTTP Request
+**_POST_** `/api/v2/m/setting/{districtid}/store`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       		            | optional? | Description
+------------------------------- | --------- | ---------------
+id                              |           | The ID of the Manager Setting 
+uid                             |           | The User ID of the Manager
+storeId                         |           | The Store ID of the Manager Setting
+laborThreshold                  |           | labor Threshold
+star                            |           | STAR
+startWeekDay                    |           | The start of Day of Week
+notifyNewRequest                |           | Whether alerts when a New Request coming
+notifyIdleAssociate             |           | 
+notifyWeeklySummary             |           | Whether send a weekly summary
+notifyPasswordChanged           |           | Whether Notify when user password has been changed
+
 
 
