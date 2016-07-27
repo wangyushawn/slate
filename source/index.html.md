@@ -1623,13 +1623,87 @@ districtid  | The ID of district, a *Long* value.
 This endpoint fetch all Availability of current date from the Store.
 
 ### HTTP Request
-
 **_GET_** `/api/v2/m/schedules/{districtid}/oncall`
 
 ### URL Parameters
 Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.
+
+## Copy Schedules to certain week
+
+This endpoint will copy certian schedules to a furture week
+
+### HTTP Request
+**_POST_** `/api/v2/m/schedules/{districtid}/copy`
+
+> The **Request Body** Json structured like this:
+
+```json
+{  
+   "from":"2016-06-21T00:00:00Z",
+   "to":"2016-06-28T00:00:00Z",
+   "schedules":[  
+      {  
+         "id":206,
+         "date":"2016-06-21T00:00:00Z",
+         "dayOfWeek":"TUESDAY",
+         "type":"DAYOFF",
+         "offType":null,
+         "source":"PUBLISHED",
+         "owner":{  
+            "uid":1696,
+            "name":"fengping",
+            "email":"fengping.hu@percolata.com",
+            "phone":"18600613412"
+         },
+         "available":{  
+            "from":"2016-06-21T09:00:00Z",
+            "to":"2016-06-21T22:00:00Z",
+            "repeat":"NONE"
+         },
+         "shift":null,
+         "createdAt":"2016-06-15T03:18:50Z",
+         "updatedAt":"2016-06-24T08:05:23Z"
+      },
+      {  
+         "id":208,
+         "date":"2016-06-23T00:00:00Z",
+         "dayOfWeek":"THURSDAY",
+         "type":"AVAILABILITY",
+         "offType":null,
+         "source":"PUBLISHED",
+         "owner":{  
+            "uid":1696,
+            "name":"fengping",
+            "email":"fengping.hu@percolata.com",
+            "phone":"18600613412"
+         },
+         "available":{  
+            "from":"2016-06-23T10:00:00Z",
+            "to":"2016-06-23T18:00:00Z",
+            "repeat":"NONE"
+         },
+         "shift":null,
+         "createdAt":"2016-06-19T18:50:59Z",
+         "updatedAt":"2016-06-24T08:05:23Z"
+      }
+   ]
+} 
+```
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Request Body
+Field       | Description
+ ---------- | -----------
+from        | **(Included)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          | **(Excluded)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+schedules   | A list of **_Slot_** Objects that contains the updates you want to publish
+
 
 # Retail Performance 
 
@@ -2201,4 +2275,27 @@ notifyWeeklySummary             |           | Whether send a weekly summary
 notifyPasswordChanged           |           | Whether Notify when user password has been changed
 
 
+# Security Token Authorization & Authentication
+
+## Authorize an Egress Token
+
+```json
+{
+  "messages": [
+    "MANAGER SETTING OF STORE#3 HAS BEEN FETCHED SUCCESSFULLY FOR USER#34"
+  ],
+  "success": true,
+  "result": "651290be-3f17-4655-b5ac-2feaa38f0435"
+}
+```
+
+This endpoint is request a EGRESS token. It will authorize a UUID EGRESS Token 
+
+### HTTP Request
+**_GET_** `/api/v2/m/token/{districtid}/egress`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
 
