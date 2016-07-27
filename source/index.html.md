@@ -2354,3 +2354,96 @@ This endpoint is request a EGRESS token. It will authorize a UUID EGRESS Token
 Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.
+
+# Marketing Events
+
+## Fetch all the Marketing events of a store
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MARKETING EVENTS HAVE BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": [
+    {
+      "eid": "8fc5275e-ae99-431b-b9ed-2d0d393b792c",
+      "storeId": 3,
+      "start": 1453795200000,
+      "end": 1453880700000,
+      "event": "110 growth",
+      "percentage": 200
+    },
+    {
+      "eid": "171a002b-2c9d-45fd-bd82-865230e57a09",
+      "storeId": 3,
+      "start": 1454400000000,
+      "end": 1455003900000,
+      "event": "2",
+      "percentage": 2
+    }
+  ]
+}
+```
+
+### HTTP Request
+**_GET_** `/api/v2/m/events/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.   
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+## Update a Marketing Event
+> The **Response** JSON structured like this:
+
+### HTTP Request
+**_POST_** `/api/v2/m/events/{districtid}`
+
+> The **Request Body** Json structured like this:
+
+```json
+{
+  "eid": "171a002b-2c9d-45fd-bd82-865230e57a09",
+  "storeId": 3,
+  "start": 1454400000000,
+  "end": 1455003900000,
+  "event": "2",
+  "percentage": 2
+}
+```
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.   
+
+### Request Body
+Field       		            | optional? | Description
+------------------------------- | --------- | ---------------
+eid                             | required  | the UUID of the event
+storeId                         |           | the store ID of the event
+start                           |           | the start time of the event in millis
+end                             |           | the end time of the event in millis
+percentage                      |           | the increase rate in percentage
+event                           |           | the name of the event
+
+## Remove a Marketing event
+> The **Response** JSON structured like this:
+
+
+### HTTP Request
+**_DELETE_** `/api/v2/m/events/{districtid}/{eid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.   
+eid         | The eid of the Marketing event
