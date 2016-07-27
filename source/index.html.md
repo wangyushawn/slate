@@ -2447,3 +2447,79 @@ Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.   
 eid         | The eid of the Marketing event
+
+
+# Blackout Dates
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MARKETING EVENTS HAVE BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": [
+    {
+      "id": 12,
+      "date": "2016-07-01T00:00:00Z",
+      "description": "110 growth"
+    },
+    {
+      "id": 13,
+      "date": "2016-07-02T00:00:00Z",
+      "description": "110 g123rowth"
+    }
+  ]
+}
+```
+
+### HTTP Request
+**_GET_** `/api/v2/m/blackouts/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value. 
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+
+## Add Blackout dates
+
+### HTTP Request
+**_POST_** `/api/v2/m/blackouts/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value. 
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+
+### Request Body
+Field       		            | optional? | Description
+------------------------------- | --------- | ---------------
+blackoutDates                   |           | A list of **BlackoutDate**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
