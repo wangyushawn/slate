@@ -1704,8 +1704,87 @@ from        | **(Included)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-01
 to          | **(Excluded)** ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 schedules   | A list of **_Slot_** Objects that contains the updates you want to publish
 
+# District
+
+## fetch Tree-like architecture of Districts
+
+### HTTP Request
+
+**_GET_** `/api/v2/dm/districts/tree`
 
 # Retail Performance 
+
+## fetch Overall Performances of Districts 
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "ANNUALLY PERFORMANCE HAS BEEN CALCULATED SUCCESSFULLY ..."
+  ],
+  "success": true,
+  "result": [
+    {
+      "districtId": 0,
+      "basicMetrics": {
+        "walkIn": 41883,
+        "walkBy": 85545,
+        "goal": 651800.5999999999,
+        "sales": 653809.073638916,
+        "validSales": 638004.703207016,
+        "lastTermSales": 700264.045396544,
+        "transactionsCount": 7496,
+        "validTCount": 7408,
+        "budget": 42666.01000000008,
+        "laborHours": 1451.25,
+        "laborCost": 11134.900000000005,
+        "lastTermCost": 0.0,
+        "efficientSlots": 545,
+        "elapseSlots": 9107,
+        "updatedAt": "2016-07-20T06:29:06.233Z"
+      },
+      "completionRate": 1.003081423427527,
+      "captureRate": 0.3286797250211884,
+      "laborEfficiency": 0.05984407598550565,
+      "usedBudgetRate": 0.26097823536815334,
+      "shopperYield": 15.233023021441062,
+      "atv": 86.12374503334449,
+      "conversion": 0.17687367189551848
+    },
+    {
+      "districtId": 0,
+      "basicMetrics": {
+        "walkIn": 41883,
+        "walkBy": 85545,
+        "goal": 651800.5999999999,
+        "sales": 653809.073638916,
+        "validSales": 638004.703207016,
+        "lastTermSales": 700264.045396544,
+        "transactionsCount": 7496,
+        "validTCount": 7408,
+        "budget": 42666.01000000008,
+        "laborHours": 1451.25,
+        "laborCost": 11134.900000000005,
+        "lastTermCost": 0.0,
+        "efficientSlots": 545,
+        "elapseSlots": 9107,
+        "updatedAt": "2016-07-20T06:29:06.233Z"
+      },
+      "completionRate": 1.003081423427527,
+      "captureRate": 0.3286797250211884,
+      "laborEfficiency": 0.05984407598550565,
+      "usedBudgetRate": 0.26097823536815334,
+      "shopperYield": 15.233023021441062,
+      "atv": 86.12374503334449,
+      "conversion": 0.17687367189551848
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+**_GET_** `/api/v2/dm/performance`
 
 ## fetch Overall Performance of Store within the period
 
@@ -1718,7 +1797,7 @@ schedules   | A list of **_Slot_** Objects that contains the updates you want to
   ],
   "success": true,
   "result": {
-    "districtId": 0,
+    "districtId": 1,
     "basicMetrics": {
       "walkIn": 41883,
       "walkBy": 85545,
@@ -1747,11 +1826,20 @@ schedules   | A list of **_Slot_** Objects that contains the updates you want to
 }
 ```
 
-This endpoint retrieves the retail performances of a store.
+This endpoint retrieves the retail performances of Districts.
 
 ### HTTP Request
 
 **_GET_** `/api/v2/m/performance/{districtid}`
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
+name        |  *String*  | Holiday name if need
+date        |            | Holiday Date if name present
+l2l         |            | Whether turn on like-to-like comparison
 
 ### URL Parameters
 Parameter   | Description
