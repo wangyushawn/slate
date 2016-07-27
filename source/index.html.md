@@ -2274,10 +2274,66 @@ notifyIdleAssociate             |           |
 notifyWeeklySummary             |           | Whether send a weekly summary
 notifyPasswordChanged           |           | Whether Notify when user password has been changed
 
+# Tableau Reports
+
+## Fetch the Tableau URL of the store
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MANAGER SETTING OF STORE#3 HAS BEEN FETCHED SUCCESSFULLY FOR USER#34"
+  ],
+  "success": true,
+  "result": ".../.../views/..."
+}
+```
+
+This endpoint will fetch the url of the tableau view of the store
+
+### HTTP Request
+**_GET_** `/api/v2/m/tableau/{districtid}/url`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+view        |  *String*  | the Tableau view name 
+
+
+## Fetch Tableau Views of the store
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MANAGER SETTING OF STORE#3 HAS BEEN FETCHED SUCCESSFULLY FOR USER#34"
+  ],
+  "success": true,
+  "result": "...."
+}
+```
+
+This endpoint will fetch tableau views of the store
+
+### HTTP Request
+**_GET_** `/api/v2/m/tableau/{districtid}/view`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value.
+
+
 
 # Security Token Authorization & Authentication
 
 ## Authorize an Egress Token
+> The **Response** JSON structured like this:
 
 ```json
 {
@@ -2298,4 +2354,3 @@ This endpoint is request a EGRESS token. It will authorize a UUID EGRESS Token
 Parameter   | Description
  ---------- | -----------
 districtid  | The ID of district, a *Long* value.
-
