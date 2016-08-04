@@ -2536,6 +2536,13 @@ Parameter   | Description
 districtid  | The ID of district, a *Long* value.   
 eid         | The eid of the Marketing event
 
+# Positions
+
+## Fetch Positions in the user
+
+### HTTP Request
+**_GET_** `/api/v2/dm/positions`
+
 
 # Blackout Dates
 > The **Response** JSON structured like this:
@@ -2597,7 +2604,21 @@ Field       		            | optional? | Description
 ------------------------------- | --------- | ---------------
 blackoutDates                   |           | A list of **BlackoutDate**
 
+## Fetch Blackout dates
 
+### HTTP Request
+**_GET_** `/api/v2/m/blackouts/{districtid}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+districtid  | The ID of district, a *Long* value. 
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+from        |  *String*  | (Included) ISO RFC3336 Date with zone offset. E.g.: 2006-01-01T00:00:00Z.
+to          |  *String*  | (Excluded) ISO RFC3336 Date with zone offset. E.g.: 2006-01-02T00:00:00Z.
 
 
 
