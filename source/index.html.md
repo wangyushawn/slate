@@ -2633,12 +2633,15 @@ eid         | The eid of the Marketing event
 
 # Enrollment
 
-APPLICATION FLOW
-Manager-Side
+**APPLICATION FLOW**
+
+*Manager-Side*
+
 1. Check the applications
 2. Review a application
 
-Employee-Side
+*Employee-Side*
+
 1. Search the workplace
 2. Locate Workplace
 3. Select the position for apply
@@ -2647,21 +2650,22 @@ Employee-Side
 
 
 
- INVITATION FLOW 
- -----
- Manager-Side>
+ **INVITATION FLOW **
+ 
+ *Manager-Side*
+ 
  1. check Staff Profile if exist
  2. Explicit the position 
  		and location of the Offer
  3. Confirm the Invitation and send it
  
- Employee-Side
+ *Employee-Side*
+
  1. check the email link
  2. 
- 		a.fetch the Profile 
+ 		* fetch the Profile 
  			if it is already existed User
- 		b.fill up the Account Info 
-		for new User sign up
+ 		* fill up the Account Info for new User sign up
  3. take offer
  
  
