@@ -20,6 +20,12 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Enroll Form
+> The **Enroll Form** JSON sturctured like this:
+
+
+
+
 ## Position Description
 > The **Position Description** JSON structured like this:
 
@@ -2713,7 +2719,82 @@ eid         | The eid of the Marketing event
  		* fill up the Account Info for new User sign up
  3. take offer
  
- 
+## Check Staff Profile 
+> The **Response** JSON structured like this:
+
+```json
+{
+  "messages": [
+    "MARKETING EVENTS HAVE BEEN FETCHED SUCCESSFULLY FOR STORE#3"
+  ],
+  "success": true,
+  "result": {
+    	"uid": 1,
+    	"name": "Nacy Adele",
+    	"email": "nacy@gmail.com",
+    	"phone": "312 799-0843",
+    	"corporate": "Uniqlo 508"
+    }
+}
+```
+
+### HTTP Request
+**_GET_** `/api/v2/m/staffing/profile`
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+email       |  *String*  | email of the Staff
+
+
+## Invite a Employee with position
+
+### HTTP Request
+**_POST_** `/api/v2/m/invite`
+
+### Request Body
+Field       		    | optional? | Description
+----------------------- | --------- | ---------------
+email                   |   false   | 
+districtId              |   false   |
+positionId              |   false   |
+statement               |   true    |
+
+
+## Fetch the Offer
+
+### HTTP Request
+**_GET_** `/api/v2/offers/{id}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+id          | The ID of the Offer
+
+### Query Parameters
+Parameter   | Value Type | Description
+----------- |:----------:| -----------
+token       |  *String*  | The token of Invitation
+email       |  *String*  | The email of the employee
+
+## Accept the Offer
+
+### HTTP Request
+**_GET_** `/api/v2/offers/{id}`
+
+### URL Parameters
+Parameter   | Description
+ ---------- | -----------
+id          | The ID of the Offer
+
+### Request Body
+Field       		    | optional? | Description
+----------------------- | --------- | ---------------
+encodedPassword         |           |
+name                    |           |
+email                   |           |
+phone                   |           |       
+
 # Blackout Dates
 > The **Response** JSON structured like this:
 
