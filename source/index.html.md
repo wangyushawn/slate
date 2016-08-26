@@ -2649,17 +2649,17 @@ eid         | The eid of the Marketing event
 
 
 
-
- ## INVITATION FLOW
+## INVITATION FLOW
  
- ### Manager-Side
+### Manager-Side
  
  1. check Staff Profile if exist
  2. Explicit the position 
  		and location of the Offer
  3. Confirm the Invitation and send it
  
- ### Employee-Side
+
+### Employee-Side
 
  1. check the email link
  2. 
