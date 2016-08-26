@@ -2633,14 +2633,14 @@ eid         | The eid of the Marketing event
 
 # Enrollment
 
-**APPLICATION FLOW**
+## APPLICATION FLOW
 
-*Manager-Side*
+### Manager-Side
 
 1. Check the applications
 2. Review a application
 
-*Employee-Side*
+### Employee-Side
 
 1. Search the workplace
 2. Locate Workplace
@@ -2650,16 +2650,16 @@ eid         | The eid of the Marketing event
 
 
 
- **INVITATION FLOW **
+ ## INVITATION FLOW
  
- *Manager-Side*
+ ### Manager-Side
  
  1. check Staff Profile if exist
  2. Explicit the position 
  		and location of the Offer
  3. Confirm the Invitation and send it
  
- *Employee-Side*
+ ### Employee-Side
 
  1. check the email link
  2. 
