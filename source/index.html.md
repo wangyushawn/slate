@@ -20,6 +20,94 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Enrollment Ticket
+> The **Enrollment Ticket** JSON structured like this:
+
+```json
+{
+	"id": 1,
+	"position":{
+		"title": "SA1",
+		"location": {
+			"name": "District#1",
+			"brand": "Uniqlo"
+		}
+	},
+	"statement": "I want to invite to join us!",
+	"signatures":{
+		"submittedBy":{
+			"name": "Nacy Lu",
+			"email": "nacy@gmail.com",
+			"phone": "312 799 0843",
+			"uid": 124
+		},
+		"submittedAt": "2016-08-24T00:34:00Z",
+		"reviewedBy":{
+			"name": "Nacy Lu",
+			"email": "nacy@gmail.com",
+			"phone": "312 799 0843",
+			"uid": 124
+		},
+		"reviewedAt": "2016-08-24T00:34:00Z"
+	},
+	"status": "PENDING"
+}
+```
+
+## Position Description
+> The **Position Description** JSON structured like this:
+
+```json
+{
+	"title": "SA1",
+	"location": {
+		"name": "District#1",
+		"brand": "Uniqlo"
+	}
+}
+```
+
+## OFFER
+> The **Offer** JSON structured like this:
+
+```json
+{
+	"position":{
+		"title": "SA1",
+		"location": {
+			"name": "District#1",
+			"brand": "Uniqlo"
+		}
+	},
+	"profile":{
+		"corporate": "Uniqlo",
+		"name": "Nacy Lu",
+		"email": "nacy@gmail.com",
+		"phone": "312 799 0843",
+		"uid": 124
+	},
+	"manager":{
+		"name": "Nacy Lu",
+		"email": "nacy@gmail.com",
+		"phone": "312 799 0843",
+		"uid": 124
+	}
+}
+```
+
+## Staff Profile
+> The **Staff Profile** JSON structured like this:
+
+```json
+{
+	"uid": 1,
+	"name": "Nacy Adele",
+	"email": "nacy@gmail.com",
+	"phone": "312 799-0843",
+	"corporate": "Uniqlo 508"
+}
+```
+
 ## Position
 > The **Position** JSON structured like this:
 
@@ -2543,7 +2631,40 @@ eid         | The eid of the Marketing event
 ### HTTP Request
 **_GET_** `/api/v2/dm/positions`
 
+# Enrollment
 
+APPLICATION FLOW
+Manager-Side
+1. Check the applications
+2. Review a application
+
+Employee-Side
+1. Search the workplace
+2. Locate Workplace
+3. Select the position for apply
+4. Send the application form
+
+
+
+
+ INVITATION FLOW 
+ -----
+ Manager-Side>
+ 1. check Staff Profile if exist
+ 2. Explicit the position 
+ 		and location of the Offer
+ 3. Confirm the Invitation and send it
+ 
+ Employee-Side
+ 1. check the email link
+ 2. 
+ 		a.fetch the Profile 
+ 			if it is already existed User
+ 		b.fill up the Account Info 
+		for new User sign up
+ 3. take offer
+ 
+ 
 # Blackout Dates
 > The **Response** JSON structured like this:
 
