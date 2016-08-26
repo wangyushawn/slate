@@ -20,6 +20,93 @@ search: true
 Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **Slots** from google calendar to SQL database.
 # Entity
 
+## Position Description
+> The **Position Description** JSON structured like this:
+
+```json
+{
+	"title": "SA1",
+	"workplace": {
+		"name": "District#1",
+		"brand": "Uniqlo"
+	}
+}
+```
+
+### Description
+The abstract description of position of the Corporate
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+title           | The position title
+workplace       | The workplace location of the position
+
+
+## Staff Profile
+> The **Staff Profile** JSON structured like this:
+
+```json
+{
+	"uid": 1,
+	"name": "Nacy Adele",
+	"email": "nacy@gmail.com",
+	"phone": "312 799-0843",
+	"corporate": "Uniqlo 508"
+}
+```
+
+### Description
+The profile of staff
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+uid             | The uid of the Staff
+name            | The name of the Staff
+email           | The email of the Staff
+phone           | The phone of the Staff
+coporate        | The corporate name of the Staff working at
+
+## Offer
+> The **Offer** JSON structured like this:
+
+```json
+{
+	"position":{
+		"title": "SA1",
+		"workplace": {
+			"name": "District#1",
+			"brand": "Uniqlo"
+		}
+	},
+	"profile":{
+		"corporate": "Uniqlo",
+		"name": "Nacy Lu",
+		"email": "nacy@gmail.com",
+		"phone": "312 799 0843",
+		"uid": 124
+	},
+	"manager":{
+		"name": "Nacy Lu",
+		"email": "nacy@gmail.com",
+		"phone": "312 799 0843",
+		"uid": 124
+	}
+}
+```
+
+### Description
+The details of offer
+
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+position        | The position description of the Offer
+profile         | The **Staff Profile** of the Offer
+manager         | The User Info of manager who gave the Offer
+
+
 ## Enrollment Ticket
 > The **Enrollment Ticket** JSON structured like this:
 
@@ -28,7 +115,7 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
 	"id": 1,
 	"position":{
 		"title": "SA1",
-		"location": {
+		"workplace": {
 			"name": "District#1",
 			"brand": "Uniqlo"
 		}
@@ -54,59 +141,17 @@ Staffum API 2.0 Document based on Staffum Server 3.0. Server #3.0 has migrate **
 }
 ```
 
-## Position Description
-> The **Position Description** JSON structured like this:
+### Description
+The details of enrollment ticket for application and invitation
 
-```json
-{
-	"title": "SA1",
-	"location": {
-		"name": "District#1",
-		"brand": "Uniqlo"
-	}
-}
-```
+### Attributes
+Attribute       | Description
+--------------- | ---------------
+position        | The position description of the Offer
+statement       | The statement who file the ticket
+signatures      | The signatures of the ticket
+status          | The status of the ticket
 
-## OFFER
-> The **Offer** JSON structured like this:
-
-```json
-{
-	"position":{
-		"title": "SA1",
-		"location": {
-			"name": "District#1",
-			"brand": "Uniqlo"
-		}
-	},
-	"profile":{
-		"corporate": "Uniqlo",
-		"name": "Nacy Lu",
-		"email": "nacy@gmail.com",
-		"phone": "312 799 0843",
-		"uid": 124
-	},
-	"manager":{
-		"name": "Nacy Lu",
-		"email": "nacy@gmail.com",
-		"phone": "312 799 0843",
-		"uid": 124
-	}
-}
-```
-
-## Staff Profile
-> The **Staff Profile** JSON structured like this:
-
-```json
-{
-	"uid": 1,
-	"name": "Nacy Adele",
-	"email": "nacy@gmail.com",
-	"phone": "312 799-0843",
-	"corporate": "Uniqlo 508"
-}
-```
 
 ## Position
 > The **Position** JSON structured like this:
@@ -2633,7 +2678,7 @@ eid         | The eid of the Marketing event
 
 # Enrollment
 
-## APPLICATION FLOW
+## Application Flow
 
 ### Manager-Side
 
@@ -2649,7 +2694,7 @@ eid         | The eid of the Marketing event
 
 
 
-## INVITATION FLOW
+## Invitation Flow
  
 ### Manager-Side
  
